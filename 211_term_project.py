@@ -62,38 +62,38 @@ def storeData():
     x4=[]
     x5=[]
     x6=[]
-    try:
-        x1.append(myList[0].get())
-        x2.append(myList[1].get())
-        if myList[2].get()=='alcohol'or  myList[2].get()=='stress'or  myList[2].get()=='melatonin':
-            x3.append(myList[2].get())
-        x4.append(float(myList[3].get()))
-        x5.append(float(myList[4].get()))
-        x6.append(float(myList[5].get()))
-        for i in range(len(myList2)):
-            x1.append(myList2[i][0].get())
-            x2.append(myList2[i][1].get())
-            if myList2[i][2].get()=='alcohol'or  myList2[i][2].get()=='stress'or myList2[i][2].get()=='melatonin':
-                x3.append(myList2[i][2].get())
-            x4.append(float(myList2[i][3].get()))
-            x5.append(float(myList2[i][4].get()))
-            x6.append(float(myList2[i][5].get()))
+    # try:
+    x1.append(myList[0].get())
+    x2.append(myList[1].get())
+    if myList[2].get()=='alcohal'or  myList[2].get()=='stress'or  myList[2].get()=='melatonin':
+        x3.append(myList[2].get())
+    x4.append(float(myList[3].get()))
+    x5.append(float(myList[4].get()))
+    x6.append(float(myList[5].get()))
+    for i in range(len(myList2)):
+        x1.append(myList2[i][0].get())
+        x2.append(myList2[i][1].get())
+        if myList2[i][2].get()=='alcohal'or  myList2[i][2].get()=='stress'or myList2[i][2].get()=='melatonin':
+            x3.append(myList2[i][2].get())
+        x4.append(float(myList2[i][3].get()))
+        x5.append(float(myList2[i][4].get()))
+        x6.append(float(myList2[i][5].get()))
 
-        df=pd.DataFrame({
-        'falling asleep time ':x1,
-        'getting out of bed ':x2,
-        'stress substance ':x3,
-        'sleep duration ':x4,
-        'quality ':x5,
-        'Stress throughout the day ':x6
-        },columns=labels)
-        df.to_csv(r'E:\\abc.csv',index=False,header=True)
-        # df['falling asleep time ']=pd.to_datetime(df['falling asleep time '])
-        # df['getting out of bed ']=pd.to_datetime(df['getting out of bed '])
-        a+=1
-    except:
-        m_box.showerror('Error','Invalid input !')
-
+    df=pd.DataFrame({
+    'falling asleep time ':x1,
+    'getting out of bed ':x2,
+    'stress substance ':x3,
+    'sleep duration ':x4,
+    'quality ':x5,
+    'Stress throughout the day ':x6
+    },columns=labels)
+    df.to_csv(r'abc.csv',index=False,header=True)
+    # df['falling asleep time ']=pd.to_datetime(df['falling asleep time '])
+    # df['getting out of bed ']=pd.to_datetime(df['getting out of bed '])
+    a+=1
+    # except:
+    #     m_box.showerror('Error','Invalid input !')
+    
 
 
 
@@ -106,7 +106,7 @@ def submit():
         win2.geometry("1000x500")
 
         def graph1():
-            df2=pd.read_csv(r'E:\\abc.csv')
+            df2=pd.read_csv(r'abc.csv')
             if df2.shape[0]<7:
                 m_box.showerror('Error','Less data then required !')
                 win2.destroy()
@@ -116,7 +116,7 @@ def submit():
                 if df2['stress substance '][i]=='stress':
                     x.append(i+1)
                     y.append(df2['sleep duration '][i])
-
+    
             plt.plot(x,y,marker='o',color='Blue')
             plt.title('Sleep hours while in Stress durring 7 Days')
             plt.xlabel('Days')
@@ -127,7 +127,7 @@ def submit():
 
         def graph2():
 
-            df3=pd.read_csv(r'E:\\abc.csv')
+            df3=pd.read_csv(r'abc.csv')
             if df3.shape[0]<30:
                 m_box.showerror('Error','Less data then required !')
                 win2.destroy()
@@ -139,7 +139,7 @@ def submit():
                     y.append(df3['sleep duration '][i])
             x2=[]
             y2=[]
-
+           
             for i in range(30):
                 if df3['stress substance '][i]=='stress':
                     x2.append(i+1)
@@ -156,14 +156,14 @@ def submit():
             plt.title('Sleep hours while in Stress durring 30 Days')
             plt.xlabel('Days')
             plt.ylabel("Amount of Hours of Sleep")
-
+            
             plt.show()
-
-
+            
+                
 
         def graph3():
-
-            df4=pd.read_csv(r'E:\\abc.csv')
+    
+            df4=pd.read_csv(r'abc.csv')
             if df4.shape[0]<90:
                 m_box.showerror('Error','Less data then required !')
                 win2.destroy()
@@ -175,7 +175,7 @@ def submit():
                     y.append(df4['sleep duration '][i])
             x2=[]
             y2=[]
-
+           
             for i in range(30):
                 if df4['stress substance '][i]=='stress':
                     x2.append(i+1)
@@ -183,7 +183,7 @@ def submit():
 
             x3=[]
             y3=[]
-
+           
             for i in range(90):
                 if df4['stress substance '][i]=='stress':
                     x2.append(i+1)
@@ -207,26 +207,26 @@ def submit():
             plt.xlabel('Days')
             plt.ylabel("Amount of Hours of Sleep")
             plt.show()
+        
 
-
-############### buttons for alcohol ###################################
+############### buttons for alcohal ###################################
 
 
         def graph11():
 
-            df2=pd.read_csv(r'E:\\abc.csv')
+            df2=pd.read_csv(r'abc.csv')
             if df2.shape[0]<7:
                 m_box.showerror('Error','Less data then required !')
                 win2.destroy()
             x=[]
             y=[]
             for i in range(7):
-                if df2['stress substance '][i]=='alcohol':
+                if df2['stress substance '][i]=='alcohal':
                     x.append(i+1)
                     y.append(df2['sleep duration '][i])
-
+                
             plt.plot(x,y,marker='o',color='Red')
-            plt.title('Sleep hours while stress substance is alcohol durring 7 Days')
+            plt.title('Sleep hours while stress substance is alcohal durring 7 Days')
             plt.xlabel('Days')
             plt.ylabel("Amount of Hours of Sleep")
             plt.legend()
@@ -235,55 +235,55 @@ def submit():
 
         def graph22():
 
-            df3=pd.read_csv(r'E:\\abc.csv')
+            df3=pd.read_csv(r'abc.csv')
             if df3.shape[0]<30:
                 m_box.showerror('Error','Less data then required !')
                 win2.destroy()
             x=[]
             y=[]
             for i in range(7):
-                if df3['stress substance '][i]=='alcohol':
+                if df3['stress substance '][i]=='alcohal':
                     x.append(i+1)
                     y.append(df3['sleep duration '][i])
             x2=[]
             y2=[]
-
+           
             for i in range(30):
-                if df3['stress substance '][i]=='alcohol':
+                if df3['stress substance '][i]=='alcohal':
                     x2.append(i+1)
                     y2.append(df3['sleep duration '][i])
 
             plt.subplot(2,1,1)
             plt.plot(x,y,marker='o',color='Red')
-            plt.title('Sleep hours while stress substance is alcohol durring 7 Days')
+            plt.title('Sleep hours while stress substance is alcohal durring 7 Days')
             plt.xlabel('Days')
             plt.ylabel("Amount of Hours of Sleep")
 
             plt.subplot(2,1,2)
             plt.plot(x2,y2,marker='o',color='Red')
-            plt.title('Sleep hours while stress substance is alcohol durring 30 Days')
+            plt.title('Sleep hours while stress substance is alcohal durring 30 Days')
             plt.xlabel('Days')
             plt.ylabel("Amount of Hours of Sleep")
-
+            
             plt.show()
-
-
+            
+                
 
         def graph33():
 
-            df4=pd.read_csv(r'E:\\abc.csv')
+            df4=pd.read_csv(r'abc.csv')
             if df4.shape[0]<90:
                 m_box.showerror('Error','Less data then required !')
                 win2.destroy()
             x=[]
             y=[]
             for i in range(7):
-                if df4['stress substance '][i]=='alcohol':
+                if df4['stress substance '][i]=='alcohal':
                     x.append(i+1)
                     y.append(df4['sleep duration '][i])
             x2=[]
             y2=[]
-
+           
             for i in range(30):
                 if df4['stress substance '][i]=='stress':
                     x2.append(i+1)
@@ -291,27 +291,27 @@ def submit():
 
             x3=[]
             y3=[]
-
+           
             for i in range(90):
-                if df4['stress substance '][i]=='alcohol':
+                if df4['stress substance '][i]=='alcohal':
                     x2.append(i+1)
                     y2.append(df4['sleep duration '][i])
 
             plt.subplot(3,1,1)
             plt.plot(x,y,marker='o',color='Red')
-            plt.title('Sleep hours while stress substance is alcohol durring 7 Days')
+            plt.title('Sleep hours while stress substance is alcohal durring 7 Days')
             plt.xlabel('Days')
             plt.ylabel("Amount of Hours of Sleep")
 
             plt.subplot(3,1,2)
             plt.plot(x2,y2,marker='o',color='Red')
-            plt.title('Sleep hours while stress substance is alcohol durring 30 Days')
+            plt.title('Sleep hours while stress substance is alcohal durring 30 Days')
             plt.xlabel('Days')
             plt.ylabel("Amount of Hours of Sleep")
 
             plt.subplot(3,1,3)
             plt.plot(x3,y3,marker='o',color='Red')
-            plt.title('Sleep hours while stress substance is alcohol durring 90 Days')
+            plt.title('Sleep hours while stress substance is alcohal durring 90 Days')
             plt.xlabel('Days')
             plt.ylabel("Amount of Hours of Sleep")
             plt.show()
@@ -323,8 +323,8 @@ def submit():
         ######################### graph for melatonin ################
 
         def graph111():
-
-            df2=pd.read_csv(r'E:\\abc.csv')
+        
+            df2=pd.read_csv(r'abc.csv')
             if df2.shape[0]<7:
                 m_box.showerror('Error','Less data then required !')
                 win2.destroy()
@@ -334,7 +334,7 @@ def submit():
                 if df2['stress substance '][i]=='melatonin':
                     x.append(i+1)
                     y.append(df2['sleep duration '][i])
-
+                
             plt.plot(x,y,marker='o',color='Green')
             plt.title('Sleep hours while stress substance is melatonin durring 7 Days')
             plt.xlabel('Days')
@@ -344,8 +344,8 @@ def submit():
 
 
         def graph222():
-
-            df3=pd.read_csv(r'E:\\abc.csv')
+        
+            df3=pd.read_csv(r'abc.csv')
             if df3.shape[0]<30:
                 m_box.showerror('Error','Less data then required !')
                 win2.destroy()
@@ -357,7 +357,7 @@ def submit():
                     y.append(df3['sleep duration '][i])
             x2=[]
             y2=[]
-
+           
             for i in range(30):
                 if df3['stress substance '][i]=='melatonin':
                     x2.append(i+1)
@@ -374,14 +374,14 @@ def submit():
             plt.title('Sleep hours while stress substance is melatonin durring 30 Days')
             plt.xlabel('Days')
             plt.ylabel("Amount of Hours of Sleep")
-
+            
             plt.show()
-
-
+            
+                
 
         def graph333():
-
-            df4=pd.read_csv(r'E:\\abc.csv')
+        
+            df4=pd.read_csv(r'abc.csv')
             if df4.shape[0]<90:
                 m_box.showerror('Error','Less data then required !')
                 win2.destroy()
@@ -393,7 +393,7 @@ def submit():
                     y.append(df4['sleep duration '][i])
             x2=[]
             y2=[]
-
+           
             for i in range(30):
                 if df4['stress substance '][i]=='melatonin':
                     x2.append(i+1)
@@ -401,7 +401,7 @@ def submit():
 
             x3=[]
             y3=[]
-
+           
             for i in range(90):
                 if df4['stress substance '][i]=='melatonin':
                     x2.append(i+1)
@@ -426,15 +426,15 @@ def submit():
             plt.ylabel("Amount of Hours of Sleep")
             plt.show()
 
-
-
+                
+        
         f2=ttk.LabelFrame(win2,text='Buttons to display graphs')
         f2.grid(row=0,column=0,padx=10,pady=20)
 
         label1=ttk.Label(f2,text='Effecting Factors !',font=('Helvetica', 18, 'bold'))
         label1.grid(row=0,column=0,sticky=tk.W,padx=5,pady=8)
 
-
+        
 
         button1=tk.Button(f2,text='Stress 7Days',height = 2, width = 25,command=graph1)
         button1.grid(row=1,column=0,sticky=tk.W,padx=15)
@@ -446,14 +446,14 @@ def submit():
         button3=tk.Button(f2,text='Stress 90Days',height = 2, width = 25,command=graph3)
         button3.grid(row=3,column=0,sticky=tk.W,padx=15)
 
-        button11=tk.Button(f2,text='alcohol 7Days',height = 2, width = 25,command=graph11)
+        button11=tk.Button(f2,text='alcohal 7Days',height = 2, width = 25,command=graph11)
         button11.grid(row=4,column=0,sticky=tk.W,padx=15)
 
-        button22=tk.Button(f2,text='alcohol 30Days',height = 2, width = 25,command=graph22)
+        button22=tk.Button(f2,text='alcohal 30Days',height = 2, width = 25,command=graph22)
         button22.grid(row=5,column=0,sticky=tk.W,padx=15)
 
 
-        button33=tk.Button(f2,text='alcohol 90Days',height = 2, width = 25,command=graph33)
+        button33=tk.Button(f2,text='alcohal 90Days',height = 2, width = 25,command=graph33)
         button33.grid(row=6,column=0,sticky=tk.W,padx=15)
 
         button111=tk.Button(f2,text='melatonin 7Days',height = 2, width = 25,command=graph111)
