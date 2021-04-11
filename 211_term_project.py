@@ -65,37 +65,37 @@ def store_data():
     x4 = []
     x5 = []
     x6 = []
-    # try:
-    x1.append(myList[0].get())
-    x2.append(myList[1].get())
-    if myList[2].get() == 'alcohol' or myList[2].get() == 'stress' or myList[2].get() == 'melatonin':
-        x3.append(myList[2].get())
-    x4.append(float(myList[3].get()))
-    x5.append(float(myList[4].get()))
-    x6.append(float(myList[5].get()))
-    for i in range(len(myList2)):
-        x1.append(myList2[i][0].get())
-        x2.append(myList2[i][1].get())
-        if myList2[i][2].get() == 'alcohol' or myList2[i][2].get() == 'stress' or myList2[i][2].get() == 'melatonin':
-            x3.append(myList2[i][2].get())
-        x4.append(float(myList2[i][3].get()))
-        x5.append(float(myList2[i][4].get()))
-        x6.append(float(myList2[i][5].get()))
+    try:
+        x1.append(float(myList[0].get()))
+        x2.append(float(myList[1].get()))
+        if myList[2].get() == 'alcohol' or myList[2].get() == 'stress' or myList[2].get() == 'melatonin':
+            x3.append(myList[2].get())
+        x4.append(float(myList[3].get()))
+        x5.append(float(myList[4].get()))
+        x6.append(float(myList[5].get()))
+        for i in range(len(myList2)):
+            x1.append(myList2[i][0].get())
+            x2.append(myList2[i][1].get())
+            if myList2[i][2].get() == 'alcohol' or myList2[i][2].get() == 'stress' or myList2[i][2].get() == 'melatonin':
+                x3.append(myList2[i][2].get())
+            x4.append(float(myList2[i][3].get()))
+            x5.append(float(myList2[i][4].get()))
+            x6.append(float(myList2[i][5].get()))
 
-    df = pd.DataFrame({
-        'Fell asleep at(24hr clock) ': x1,
-        'Got out of bed at ': x2,
-        'Substance(all lowercase) ': x3,
-        'Sleep duration (hours) ': x4,
-        'Quality of sleep ': x5,
-        'Stress (1 to 10) ': x6
-        }, columns=labels)
-    df.to_csv(r'sleep_data.csv', index=False, header=True)
-    # df['Fell asleep at (24 hour clock): ']=pd.to_datetime(df['Fell asleep at (24 hour clock): '])
-    # df['Got out of bed at: ']=pd.to_datetime(df['Got out of bed at: '])
-    a += 1
-    # except:
-    #     m_box.showerror('Error','Invalid input !')
+        df = pd.DataFrame({
+            'Fell asleep at(24hr clock) ': x1,
+            'Got out of bed at ': x2,
+            'Substance(all lowercase) ': x3,
+            'Sleep duration (hours) ': x4,
+            'Quality of sleep ': x5,
+            'Stress (1 to 10) ': x6
+            }, columns=labels)
+        df.to_csv(r'sleep_data.csv', index=False, header=True)
+        # df['Fell asleep at (24 hour clock): ']=pd.to_datetime(df['Fell asleep at (24 hour clock): '])
+        # df['Got out of bed at: ']=pd.to_datetime(df['Got out of bed at: '])
+        a += 1
+    except:
+        m_box.showerror('Error', 'Invalid input!')
 
 
 def submit():
